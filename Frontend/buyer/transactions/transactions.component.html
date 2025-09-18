@@ -1,0 +1,25 @@
+<div class="container mt-4">
+    <h3 class="mb-4 text-muted">👤 My Transactions</h3>
+  
+    <div *ngIf="transactions.length === 0" class="alert alert-info text-center">
+      No purchases yet. Start exploring and buy your dream property! 🏡
+    </div>
+  
+    <div *ngIf="transactions.length > 0" class="row row-cols-1 row-cols-md-2 g-4">
+      <div *ngFor="let txn of transactions" class="col">
+        <div class="card h-100 shadow border border-secondary">
+          <img [src]="txn.property.imageUrl" class="card-img-top"
+               alt="{{ txn.property.title }}" style="height: 200px; object-fit: cover;" />
+  
+          <div class="card-body">
+            <h5 class="card-title">{{ txn.property.title }}</h5>
+            <p class="card-text">{{ txn.property.location }}</p>
+            <p class="card-text text-success"><strong>₹{{ txn.property.price | number }}</strong></p>
+            <p class="card-text">Status: <span class="fw-bold text-warning">{{ txn.status }}</span></p>
+            
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>

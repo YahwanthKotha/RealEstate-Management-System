@@ -1,0 +1,27 @@
+<div class="container mt-4">
+  <h3 class="mb-3 text-white">👁️ Viewed Properties</h3>
+
+  <div *ngIf="viewedProperties.length === 0" class="alert alert-warning text-center">
+    You haven't viewed any properties yet.
+  </div>
+
+  <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-4" *ngIf="viewedProperties.length > 0">
+    <div class="col" *ngFor="let property of viewedProperties">
+      <div class="card h-100 shadow border border-secondary">
+        <img
+        *ngIf="property"
+        [src]="property.imageUrl ? 'http://localhost:8082' + property.imageUrl : 'https://via.placeholder.com/300x200?text=No+Image'"
+        class="card-img-top"
+        style="height: 200px; width: 100%; object-fit: cover;"
+        alt="{{ property.title || 'Property Image' }}"
+      />
+        <div class="card-body">
+          <h5 class="card-title">{{ property.title }}</h5>
+          <p class="card-text">{{ property.location }}</p>
+          <p class="card-text text-success"><strong>₹{{ property.price | number }}</strong></p>
+          <p class="card-text">{{ property.description }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
